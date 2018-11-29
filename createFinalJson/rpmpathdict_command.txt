@@ -1,0 +1,6 @@
+.mode csv
+.import source.csv source
+.header on
+.mode csv
+.once pathdict.csv
+SELECT DISTINCT  substr(source."Archive context", instr(source."Archive context",'!'), -instr(source."Archive context",'!')) as rpm_name, substr(source."Archive context", instr(source."Archive context",'!')+1) as rpm_path, source.Path, source."Component name", source."Component version name" FROM source WHERE source."Archive context" != "";

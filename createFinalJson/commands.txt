@@ -1,0 +1,7 @@
+.mode csv
+.import security.csv security
+.import source.csv source
+.header on
+.mode csv
+.once club.csv
+SELECT DISTINCT  substr(source."Archive context", instr(source."Archive context",'!'), -instr(source."Archive context",'!')) as rpm_name, substr(source."Archive context", instr(source."Archive context",'!')+1) as rpm_path, source.Path, security."Component name" as library, security."Component version name" as library_version, security."Vulnerability id" as cve, security."Base score" as base_score FROM security LEFT JOIN source ON security."Version id" = source."Version id" where security."Remediation status"="NEW" ORDER BY rpm_name;

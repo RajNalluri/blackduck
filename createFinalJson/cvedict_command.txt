@@ -1,0 +1,6 @@
+.mode csv
+.import security.csv security
+.header on
+.mode csv
+.once cvedict.csv
+SELECT DISTINCT security.'Vulnerability id', security.'Description', security.'Published on', security.'Base score' from security where security.'Remediation status' = 'NEW';

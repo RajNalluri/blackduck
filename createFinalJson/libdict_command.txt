@@ -1,0 +1,6 @@
+.mode csv
+.import security.csv security
+.header on
+.mode csv
+.once libdict.csv
+SELECT DISTINCT security.'Component name', security.'Component version name', security.'Vulnerability id' from security where security.'Remediation status' = 'NEW';

@@ -1,0 +1,7 @@
+.mode csv
+.import security.csv security
+.import source.csv source
+.header on
+.mode csv
+.once ssclub.csv
+SELECT DISTINCT  substr(source."Archive context", instr(source."Archive context",'!'), -instr(source."Archive context",'!')) as rpm_name, security."Component name", security."Component version name" FROM security LEFT JOIN source ON security."Version id" = source."Version id" where (security."Remediation status" = "NEW" AND source."Archive context" != "" ) ORDER BY rpm_name;
