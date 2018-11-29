@@ -1,7 +1,0 @@
-.mode csv
-.import security.csv security
-.import finalscores.csv finalscores
-.header on
-.mode csv
-.once new_security.csv
-SELECT DISTINCT security.*, finalscores.finalscore, finalscores.severity AS finalseverity FROM security LEFT JOIN finalscores ON finalscores."Vulnerability id" = security."Vulnerability id";

@@ -1,6 +1,0 @@
-.mode csv
-.import security.csv security
-.header on
-.mode csv
-.once bdcves.csv
-SELECT DISTINCT  security."Vulnerability id", security."Base score" from security;

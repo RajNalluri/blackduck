@@ -1,7 +1,0 @@
-.mode csv
-.import bdcves.csv bdcves
-.import final_mapping.csv final_mapping
-.header on
-.mode csv
-.once input_to_finalscore.csv
-SELECT DISTINCT bdcves.*,final_mapping.* from bdcves left join final_mapping on rtrim(substr(bdcves."Vulnerability id", instr(bdcves."Vulnerability id",'C')),')') = final_mapping.cve ; ;
